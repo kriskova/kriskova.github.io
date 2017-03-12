@@ -6,21 +6,27 @@
     <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.slim.min.js"></script>
 
     <title>Hello | Kriskova.com</title>
-    
+
 </head>
 <body>
-  <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3 col-sm-12 hello-box-wrapper">
-            <div class="hello-box">
-                <p class="heading">Hello,</p>
-                <p class="heading">I'm Krisztian Kovacs</p>
-                <p>You can reach me at <a href="mailto:hello@kriskova.com?Subject=Hello%20Krisz" target="_top">hello@kriskova.com</a>!</p>
-            </div>
-        </div>
+  <div class="hello-box-wrapper">
+      <div class="hello-box">
+          <p class="heading">Hello,</p>
+          <p class="heading">I'm Krisztian Kovacs</p>
+          <p class="contact">You can reach me at <a href="mailto:hello@kriskova.com?Subject=Hello%20Krisz" target="_top">hello@kriskova.com</a>!</p>
       </div>
   </div>
+  <script>
+    var card = $(".hello-box");
+
+    $(document).on("mousemove",function(e) {
+      var ax = -($(window).innerWidth()/2- e.pageX)/20;
+      var ay = ($(window).innerHeight()/2- e.pageY)/10;
+      card.attr("style", "transform: rotateY("+ax+"deg) rotateX("+ay+"deg);-webkit-transform: rotateY("+ax+"deg) rotateX("+ay+"deg);-moz-transform: rotateY("+ax+"deg) rotateX("+ay+"deg)");
+    });
+  </script>
 </body>
 </html>
