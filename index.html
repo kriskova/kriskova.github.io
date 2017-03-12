@@ -27,6 +27,27 @@
       var ay = ($(window).innerHeight()/2- e.pageY)/10;
       card.attr("style", "transform: rotateY("+ax+"deg) rotateX("+ay+"deg);-webkit-transform: rotateY("+ax+"deg) rotateX("+ay+"deg);-moz-transform: rotateY("+ax+"deg) rotateX("+ay+"deg)");
     });
+
+    if(window.DeviceMotionEvent){
+      window.addEventListener("deviceorientation", motion, false);
+    }else{
+      console.log("DeviceMotionEvent is not supported");
+    }
+
+    function motion(event){
+      if (!window.initgamma) {
+        window.initgamma= event.gamma;
+        window.initBeta = event.beta;
+      }
+      var ax = 0;
+      var ay = 0;
+
+      var tempGamma = Math.max(-30, event.gamma);
+      tempGamma = Math.min(30, tempGamma);
+      ax = tempGamma;
+      ay = event.beta - window.initBeta;
+      card.attr("style", "transform: rotateY("+ax+"deg) rotateX("+ay+"deg);-webkit-transform: rotateY("+ax+"deg) rotateX("+ay+"deg);-moz-transform: rotateY("+ax+"deg) rotateX("+ay+"deg)");
+    }
   </script>
 </body>
 </html>
